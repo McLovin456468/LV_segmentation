@@ -25,19 +25,16 @@ def decoder_block(x, skip, filters, use_dropout=False):
 def build_light_unet(input_shape=(256, 256, 1)):
     inputs = Input(shape=input_shape)
 
-    # Encoder (меньше фильтров)
     e1 = encoder_block(inputs, 32, use_batchnorm=False)
     e2 = encoder_block(e1, 64)
     e3 = encoder_block(e2, 128)
     e4 = encoder_block(e3, 256)
 
-    # Bottleneck
     b = Conv2D(512, (3, 3), strides=2, padding='same',
                kernel_initializer=HeNormal(), kernel_regularizer=l2(1e-4))(e4)
     b = ReLU()(b)
     b = Dropout(0.5)(b)
 
-    # Decoder
     d1 = decoder_block(b, e4, 256)
     d2 = decoder_block(d1, e3, 128)
     d3 = decoder_block(d2, e2, 64)
