@@ -23,3 +23,4 @@
 📎 Telegram: @just_dilya
 
 Спасибо, что заглянули! ❤️
+![РЕЗУЛЬТАТ gif](https://github.com/user-attachments/assets/534dd1b2-72bf-4fd8-bb17-3370494f696d)
